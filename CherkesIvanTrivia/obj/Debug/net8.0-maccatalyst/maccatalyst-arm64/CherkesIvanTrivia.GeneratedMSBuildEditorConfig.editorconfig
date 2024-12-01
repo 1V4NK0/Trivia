@@ -28,6 +28,12 @@ build_metadata.AdditionalFiles.ManifestResourceName = CherkesIvanTrivia.AppShell
 build_metadata.AdditionalFiles.TargetPath = AppShell.xaml
 build_metadata.AdditionalFiles.RelativePath = AppShell.xaml
 
+[/Users/zsutop/CrossPlatform/CherkesIvanTrivia/CherkesIvanTrivia/Game.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = CherkesIvanTrivia.Game.xaml
+build_metadata.AdditionalFiles.TargetPath = Game.xaml
+build_metadata.AdditionalFiles.RelativePath = Game.xaml
+
 [/Users/zsutop/CrossPlatform/CherkesIvanTrivia/CherkesIvanTrivia/MainPage.xaml]
 build_metadata.AdditionalFiles.GenKind = Xaml
 build_metadata.AdditionalFiles.ManifestResourceName = CherkesIvanTrivia.MainPage.xaml
@@ -45,3 +51,9 @@ build_metadata.AdditionalFiles.GenKind = Xaml
 build_metadata.AdditionalFiles.ManifestResourceName = CherkesIvanTrivia.Resources.Styles.Styles.xaml
 build_metadata.AdditionalFiles.TargetPath = Resources/Styles/Styles.xaml
 build_metadata.AdditionalFiles.RelativePath = Resources/Styles/Styles.xaml
+
+[/Users/zsutop/CrossPlatform/CherkesIvanTrivia/CherkesIvanTrivia/Settings.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = CherkesIvanTrivia.Settings.xaml
+build_metadata.AdditionalFiles.TargetPath = Settings.xaml
+build_metadata.AdditionalFiles.RelativePath = Settings.xaml

@@ -13,7 +13,10 @@ public static class MauiProgram
 			{
 				fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
 				fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
+				
 			});
+		builder.Services.AddTransient<Settings>();
+		builder.Services.AddTransient<Game>();
 
 #if DEBUG
 		builder.Logging.AddDebug();

@@ -5,17 +5,19 @@
 
     <ContentPage.BackgroundColor>
         <!-- Hex color value #FF5733 -->
-        <Color>#FF5733</Color>
+        <Color>#464E47</Color>
     </ContentPage.BackgroundColor>
+
+    
 
     <ScrollView>
         <VerticalStackLayout
             Padding="30,0"
             Spacing="25"
             >
-
-            <Label Text="Welcome to Trivia!"/>
-
+            <Label Text="Welcome to Trivia!" HorizontalOptions="Center" TextColor="White" Margin="0,20,0,0" FontSize="35" FontFamily="OpenSansRegular"/>
+            <Button Text="Start Game" x:Name="StartGameBtn" Margin="0,70,0,0" WidthRequest="200" BackgroundColor="#568259" Clicked="StartGameBtn_Clicked" HorizontalOptions="Center"/>
+            <Button Text="Settings" x:Name="SettingsBtn" WidthRequest="200" BackgroundColor="#568259" Clicked="SettingsBtn_Clicked"/>
             
         </VerticalStackLayout>
     </ScrollView>
