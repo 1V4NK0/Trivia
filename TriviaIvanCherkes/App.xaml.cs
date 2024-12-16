@@ -1,12 +1,24 @@
-﻿namespace TriviaIvanCherkes;
+﻿using TriviaIvanCherkes.Resources.Styles;
+
+namespace TriviaIvanCherkes;
 
 public partial class App : Application
 {
+	
 	public App()
 	{
 		InitializeComponent();
+        bool isDarkTheme = Preferences.Get("isDarkTheme", false);
 
-		MainPage = new AppShell();
+        if (isDarkTheme)
+        {
+            Current.Resources.MergedDictionaries.Add(new DarkTheme());
+        }
+        else
+        {
+            Current.Resources.MergedDictionaries.Add(new LightTheme());
+        }
+        MainPage = new AppShell();
 	}
 }
 

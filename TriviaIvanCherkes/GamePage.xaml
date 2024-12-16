@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="TriviaIvanCherkes.GamePage"
+             BackgroundColor="{DynamicResource BackgroundColor}"
+             Title="GamePage">
+    <VerticalStackLayout>
+        <Label 
+            Text="GAME PAGE"
+            TextColor="{DynamicResource TextColor}"
+            VerticalOptions="Center" 
+            HorizontalOptions="Center" />
+
+        <Label x:Name="PlayerCountLabel" TextColor="{DynamicResource TextColor}" HorizontalOptions="Center" FontSize="34" Text="{Binding Players}"/>
+    </VerticalStackLayout>
+</ContentPage>

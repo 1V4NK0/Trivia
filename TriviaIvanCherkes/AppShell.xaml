@@ -7,10 +7,26 @@
     Shell.FlyoutBehavior="Disabled"
     Title="TriviaIvanCherkes">
 
+    <TabBar>
+        <Tab  Icon="home.png">
+            <ShellContent ContentTemplate="{DataTemplate local:MainPage}"/>
+        </Tab>
+
+        <Tab  Icon="settings.png">
+            <ShellContent ContentTemplate="{DataTemplate local:SettingsPage}"/>
+        </Tab>
+
+        <Tab  Icon="results.png">
+            <ShellContent ContentTemplate="{DataTemplate local:ResultsPage}"/>
+        </Tab>
+
+    </TabBar>
+
     <ShellContent
         Title="Home"
         ContentTemplate="{DataTemplate local:MainPage}"
         Route="MainPage" />
 
+    <ShellContent Title="Game Page" ContentTemplate="{DataTemplate local:GamePage}" Route="game"/>
 </Shell>
 

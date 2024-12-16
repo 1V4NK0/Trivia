@@ -28,6 +28,12 @@ build_metadata.AdditionalFiles.ManifestResourceName = TriviaIvanCherkes.AppShell
 build_metadata.AdditionalFiles.TargetPath = AppShell.xaml
 build_metadata.AdditionalFiles.RelativePath = AppShell.xaml
 
+[/Users/zsutop/CrossPlatform/TriviaIvanCherkes/TriviaIvanCherkes/GamePage.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = TriviaIvanCherkes.GamePage.xaml
+build_metadata.AdditionalFiles.TargetPath = GamePage.xaml
+build_metadata.AdditionalFiles.RelativePath = GamePage.xaml
+
 [/Users/zsutop/CrossPlatform/TriviaIvanCherkes/TriviaIvanCherkes/MainPage.xaml]
 build_metadata.AdditionalFiles.GenKind = Xaml
 build_metadata.AdditionalFiles.ManifestResourceName = TriviaIvanCherkes.MainPage.xaml
@@ -40,8 +46,32 @@ build_metadata.AdditionalFiles.ManifestResourceName = TriviaIvanCherkes.Resource
 build_metadata.AdditionalFiles.TargetPath = Resources/Styles/Colors.xaml
 build_metadata.AdditionalFiles.RelativePath = Resources/Styles/Colors.xaml
 
+[/Users/zsutop/CrossPlatform/TriviaIvanCherkes/TriviaIvanCherkes/Resources/Styles/DarkTheme.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = TriviaIvanCherkes.Resources.Styles.DarkTheme.xaml
+build_metadata.AdditionalFiles.TargetPath = Resources/Styles/DarkTheme.xaml
+build_metadata.AdditionalFiles.RelativePath = Resources/Styles/DarkTheme.xaml
+
+[/Users/zsutop/CrossPlatform/TriviaIvanCherkes/TriviaIvanCherkes/Resources/Styles/LightTheme.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = TriviaIvanCherkes.Resources.Styles.LightTheme.xaml
+build_metadata.AdditionalFiles.TargetPath = Resources/Styles/LightTheme.xaml
+build_metadata.AdditionalFiles.RelativePath = Resources/Styles/LightTheme.xaml
+
 [/Users/zsutop/CrossPlatform/TriviaIvanCherkes/TriviaIvanCherkes/Resources/Styles/Styles.xaml]
 build_metadata.AdditionalFiles.GenKind = Xaml
 build_metadata.AdditionalFiles.ManifestResourceName = TriviaIvanCherkes.Resources.Styles.Styles.xaml
 build_metadata.AdditionalFiles.TargetPath = Resources/Styles/Styles.xaml
 build_metadata.AdditionalFiles.RelativePath = Resources/Styles/Styles.xaml
+
+[/Users/zsutop/CrossPlatform/TriviaIvanCherkes/TriviaIvanCherkes/ResultsPage.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = TriviaIvanCherkes.ResultsPage.xaml
+build_metadata.AdditionalFiles.TargetPath = ResultsPage.xaml
+build_metadata.AdditionalFiles.RelativePath = ResultsPage.xaml
+
+[/Users/zsutop/CrossPlatform/TriviaIvanCherkes/TriviaIvanCherkes/SettingsPage.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = TriviaIvanCherkes.SettingsPage.xaml
+build_metadata.AdditionalFiles.TargetPath = SettingsPage.xaml
+build_metadata.AdditionalFiles.RelativePath = SettingsPage.xaml
