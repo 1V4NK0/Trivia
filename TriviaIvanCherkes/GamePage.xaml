@@ -3,17 +3,32 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="TriviaIvanCherkes.GamePage"
              BackgroundColor="{DynamicResource BackgroundColor}"
-             Title="GamePage">
-    <VerticalStackLayout>
-        <Label 
-            Text="GAME PAGE"
+             Title="Game">
+    <VerticalStackLayout Padding="20">
+        <ActivityIndicator IsRunning="{Binding IsBusy}" Color="Pink"/>
+        <Label
+            x:Name="QuestionLabel"
+            Text="{Binding CurrentQuestion.QuestionText}"
             TextColor="{DynamicResource TextColor}"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
+            VerticalOptions="Center"
+            HorizontalOptions="Center"
+            FontSize="30"/>
 
-        <Label x:Name="PlayerCountLabel" TextColor="{DynamicResource TextColor}" HorizontalOptions="Center" FontSize="34" Text="{Binding Players}"/>
+
+        <CollectionView ItemsSource="{Binding Answers}"
+                SelectedItem="{Binding SelectedAnswer}"
+                SelectionChanged="OnSelectedAnswer">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Button Text="{Binding}" TextColor="{DynamicResource TextColor}"/>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+
+        
+        <!--<Label x:Name="PlayerCountLabel" TextColor="{DynamicResource TextColor}" HorizontalOptions="Center" FontSize="34" Text="{Binding Players}"/>
         <Label  TextColor="{DynamicResource TextColor}" HorizontalOptions="Center" FontSize="34" Text="{Binding Difficulty}"/>
         <Label  TextColor="{DynamicResource TextColor}" HorizontalOptions="Center" FontSize="34" Text="{Binding NumOfQuestions}"/>
-        <Label  TextColor="{DynamicResource TextColor}" HorizontalOptions="Center" FontSize="34" Text="{Binding Topic}"/>
+        <Label  TextColor="{DynamicResource TextColor}" HorizontalOptions="Center" FontSize="34" Text="{Binding Topic}"/>-->
     </VerticalStackLayout>
 </ContentPage>

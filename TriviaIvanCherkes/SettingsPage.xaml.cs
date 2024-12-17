@@ -6,11 +6,21 @@ namespace TriviaIvanCherkes;
 
 public partial class SettingsPage : ContentPage, INotifyPropertyChanged
 {
-    //TODO: CREATE ALL SETTINGS THEN PASS THEM INTO NEW GAME OBJ.
-    //then try to display those settings in the game page
+    
     private string topic;
     private string difficulty;
     private int numOfQuestions;
+
+    public static Dictionary<string, int> TopicToNumber = new()
+    {
+        { "General", 9},
+        {"Computers", 18 },
+        {"Books", 10 },
+        {"Film", 11 },
+        {"Music", 12 },
+        {"Video Games", 15 },
+        {"Sports", 21 },
+    };
 
     public string Topic
     {
@@ -36,11 +46,13 @@ public partial class SettingsPage : ContentPage, INotifyPropertyChanged
 
     public int NumOfQuestions { get => numOfQuestions; set 
             {
-            if (value < 0 || value > 20)
+            if (value < 1 || value > 20)
             {
                 numOfQuestions = 10;
+            } else
+            {
+                numOfQuestions = value;
             }
-            numOfQuestions = value;
             OnPropertyChanged(nameof(NumOfQuestions));
             Preferences.Set("numOfQuestions", numOfQuestions);
         } }
@@ -51,14 +63,16 @@ public partial class SettingsPage : ContentPage, INotifyPropertyChanged
     public SettingsPage()
     {
         InitializeComponent();
-
+        BindingContext = this;
         // Retrieve the saved theme preference and set the property
         IsDarkTheme = Preferences.Get("isDarkTheme", false); // Default to LightTheme
-
+        Difficulty = Preferences.Get("difficulty", "Easy"); // Default to "Easy" if not set
+        Topic = Preferences.Get("topic", "General"); // Default to "General" if not set
+        NumOfQuestions = Preferences.Get("numOfQuestions", 10);
         // Apply the saved theme on page load
         ApplyTheme(IsDarkTheme);
         InitializeAudioPlayer();
-        BindingContext = this; // Set BindingContext after initializing IsDarkTheme
+        
     }
 
     void DarkTheme_Toggled(System.Object sender, Microsoft.Maui.Controls.ToggledEventArgs e)
@@ -76,7 +90,7 @@ public partial class SettingsPage : ContentPage, INotifyPropertyChanged
         {
             // Load the audio file from the Resources folder
             audioPlayer = AudioManager.Current.CreatePlayer(await FileSystem.OpenAppPackageFileAsync("music.mp3"));
-            audioPlayer.Loop = true; 
+            audioPlayer.Loop = true; //Add loop for music
         }
         catch (Exception ex)
         {
@@ -86,6 +100,7 @@ public partial class SettingsPage : ContentPage, INotifyPropertyChanged
 
     private void ApplyTheme(bool isDark)
     {
+        //Clearing dictionary and adding theme based on argument
         Application.Current.Resources.MergedDictionaries.Clear();
         if (isDark)
         {

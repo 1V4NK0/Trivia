@@ -43,10 +43,10 @@
 	</PropertyGroup>
 	<ItemGroup>
 		<!-- App Icon -->
-		<MauiIcon Include="Resources\AppIcon\appicon.svg" ForegroundFile="Resources\AppIcon\appiconfg.svg" Color="#512BD4" />
+		<MauiIcon Include="Resources\AppIcon\appicon.svg"  Color="#E5D9F2" />
 
 		<!-- Splash Screen -->
-		<MauiSplashScreen Include="Resources\Splash\splash.svg" Color="#213555" BaseSize="128,128" />
+		<MauiSplashScreen Include="Resources\Splash\splash.svg" Color="#3E5879" BaseSize="128,128" />
 
 		<!-- Images -->
 		<MauiImage Include="Resources\Images\*" />
@@ -70,10 +70,12 @@
 	  <None Remove="Resources\Images\trivia.png" />
 	  <None Remove="Resources\Images\settings.png" />
 	  <None Remove="Resources\music.mp3" />
+	  <None Remove="Resources\test.mp3" />
 	</ItemGroup>
 	<ItemGroup>
 	  <BundleResource Include="Resources\Images\trivia.png" />
 	  <BundleResource Include="Resources\Images\settings.png" />
 	  <BundleResource Include="Resources\music.mp3" />
+	  <BundleResource Include="Resources\test.mp3" />
 	</ItemGroup>
 </Project>
