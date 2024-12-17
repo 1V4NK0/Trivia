@@ -445,6 +445,19 @@
           "build/Microsoft.NET.ILLink.Tasks.props": {}
         }
       },
+      "Plugin.Maui.Audio/3.0.1": {
+        "type": "package",
+        "compile": {
+          "lib/net8.0-android34.0/Plugin.Maui.Audio.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net8.0-android34.0/Plugin.Maui.Audio.dll": {
+            "related": ".xml"
+          }
+        }
+      },
       "Xamarin.Android.Glide/4.15.1.2": {
         "type": "package",
         "dependencies": {
@@ -2650,6 +2663,19 @@
         "type": "package",
         "build": {
           "build/Microsoft.NET.ILLink.Tasks.props": {}
+        }
+      },
+      "Plugin.Maui.Audio/3.0.1": {
+        "type": "package",
+        "compile": {
+          "lib/net8.0-android34.0/Plugin.Maui.Audio.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net8.0-android34.0/Plugin.Maui.Audio.dll": {
+            "related": ".xml"
+          }
         }
       },
       "Xamarin.Android.Glide/4.15.1.2": {
@@ -4859,6 +4885,19 @@
           "build/Microsoft.NET.ILLink.Tasks.props": {}
         }
       },
+      "Plugin.Maui.Audio/3.0.1": {
+        "type": "package",
+        "compile": {
+          "lib/net8.0-android34.0/Plugin.Maui.Audio.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net8.0-android34.0/Plugin.Maui.Audio.dll": {
+            "related": ".xml"
+          }
+        }
+      },
       "Xamarin.Android.Glide/4.15.1.2": {
         "type": "package",
         "dependencies": {
@@ -7064,6 +7103,19 @@
         "type": "package",
         "build": {
           "build/Microsoft.NET.ILLink.Tasks.props": {}
+        }
+      },
+      "Plugin.Maui.Audio/3.0.1": {
+        "type": "package",
+        "compile": {
+          "lib/net8.0-android34.0/Plugin.Maui.Audio.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net8.0-android34.0/Plugin.Maui.Audio.dll": {
+            "related": ".xml"
+          }
         }
       },
       "Xamarin.Android.Glide/4.15.1.2": {
@@ -9273,6 +9325,19 @@
           "build/Microsoft.NET.ILLink.Tasks.props": {}
         }
       },
+      "Plugin.Maui.Audio/3.0.1": {
+        "type": "package",
+        "compile": {
+          "lib/net8.0-android34.0/Plugin.Maui.Audio.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net8.0-android34.0/Plugin.Maui.Audio.dll": {
+            "related": ".xml"
+          }
+        }
+      },
       "Xamarin.Android.Glide/4.15.1.2": {
         "type": "package",
         "dependencies": {
@@ -11478,6 +11543,19 @@
         "type": "package",
         "build": {
           "build/Microsoft.NET.ILLink.Tasks.props": {}
+        }
+      },
+      "Plugin.Maui.Audio/3.0.1": {
+        "type": "package",
+        "compile": {
+          "lib/net8.0-android34.0/Plugin.Maui.Audio.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net8.0-android34.0/Plugin.Maui.Audio.dll": {
+            "related": ".xml"
+          }
         }
       },
       "Xamarin.Android.Glide/4.15.1.2": {
@@ -13687,6 +13765,19 @@
           "build/Microsoft.NET.ILLink.Tasks.props": {}
         }
       },
+      "Plugin.Maui.Audio/3.0.1": {
+        "type": "package",
+        "compile": {
+          "lib/net8.0-android34.0/Plugin.Maui.Audio.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net8.0-android34.0/Plugin.Maui.Audio.dll": {
+            "related": ".xml"
+          }
+        }
+      },
       "Xamarin.Android.Glide/4.15.1.2": {
         "type": "package",
         "dependencies": {
@@ -15869,6 +15960,15 @@
         "build": {
           "build/Microsoft.NET.ILLink.Tasks.props": {}
         }
+      },
+      "Plugin.Maui.Audio/3.0.1": {
+        "type": "package",
+        "compile": {
+          "lib/net8.0-ios17.5/Plugin.Maui.Audio.dll": {}
+        },
+        "runtime": {
+          "lib/net8.0-ios17.5/Plugin.Maui.Audio.dll": {}
+        }
       }
     },
     "net8.0-ios18.0/android-arm": {
@@ -16289,6 +16389,15 @@
         "type": "package",
         "build": {
           "build/Microsoft.NET.ILLink.Tasks.props": {}
+        }
+      },
+      "Plugin.Maui.Audio/3.0.1": {
+        "type": "package",
+        "compile": {
+          "lib/net8.0-ios17.5/Plugin.Maui.Audio.dll": {}
+        },
+        "runtime": {
+          "lib/net8.0-ios17.5/Plugin.Maui.Audio.dll": {}
         }
       }
     },
@@ -16711,6 +16820,15 @@
         "build": {
           "build/Microsoft.NET.ILLink.Tasks.props": {}
         }
+      },
+      "Plugin.Maui.Audio/3.0.1": {
+        "type": "package",
+        "compile": {
+          "lib/net8.0-ios17.5/Plugin.Maui.Audio.dll": {}
+        },
+        "runtime": {
+          "lib/net8.0-ios17.5/Plugin.Maui.Audio.dll": {}
+        }
       }
     },
     "net8.0-ios18.0/android-x64": {
@@ -17131,6 +17249,15 @@
         "type": "package",
         "build": {
           "build/Microsoft.NET.ILLink.Tasks.props": {}
+        }
+      },
+      "Plugin.Maui.Audio/3.0.1": {
+        "type": "package",
+        "compile": {
+          "lib/net8.0-ios17.5/Plugin.Maui.Audio.dll": {}
+        },
+        "runtime": {
+          "lib/net8.0-ios17.5/Plugin.Maui.Audio.dll": {}
         }
       }
     },
@@ -17553,6 +17680,15 @@
         "build": {
           "build/Microsoft.NET.ILLink.Tasks.props": {}
         }
+      },
+      "Plugin.Maui.Audio/3.0.1": {
+        "type": "package",
+        "compile": {
+          "lib/net8.0-ios17.5/Plugin.Maui.Audio.dll": {}
+        },
+        "runtime": {
+          "lib/net8.0-ios17.5/Plugin.Maui.Audio.dll": {}
+        }
       }
     },
     "net8.0-ios18.0/iossimulator-arm64": {
@@ -17973,6 +18109,15 @@
         "type": "package",
         "build": {
           "build/Microsoft.NET.ILLink.Tasks.props": {}
+        }
+      },
+      "Plugin.Maui.Audio/3.0.1": {
+        "type": "package",
+        "compile": {
+          "lib/net8.0-ios17.5/Plugin.Maui.Audio.dll": {}
+        },
+        "runtime": {
+          "lib/net8.0-ios17.5/Plugin.Maui.Audio.dll": {}
         }
       }
     },
@@ -18395,6 +18540,15 @@
         "build": {
           "build/Microsoft.NET.ILLink.Tasks.props": {}
         }
+      },
+      "Plugin.Maui.Audio/3.0.1": {
+        "type": "package",
+        "compile": {
+          "lib/net8.0-ios17.5/Plugin.Maui.Audio.dll": {}
+        },
+        "runtime": {
+          "lib/net8.0-ios17.5/Plugin.Maui.Audio.dll": {}
+        }
       }
     },
     "net8.0-maccatalyst18.0": {
@@ -18815,6 +18969,15 @@
         "type": "package",
         "build": {
           "build/Microsoft.NET.ILLink.Tasks.props": {}
+        }
+      },
+      "Plugin.Maui.Audio/3.0.1": {
+        "type": "package",
+        "compile": {
+          "lib/net8.0-maccatalyst17.5/Plugin.Maui.Audio.dll": {}
+        },
+        "runtime": {
+          "lib/net8.0-maccatalyst17.5/Plugin.Maui.Audio.dll": {}
         }
       }
     },
@@ -19237,6 +19400,15 @@
         "build": {
           "build/Microsoft.NET.ILLink.Tasks.props": {}
         }
+      },
+      "Plugin.Maui.Audio/3.0.1": {
+        "type": "package",
+        "compile": {
+          "lib/net8.0-maccatalyst17.5/Plugin.Maui.Audio.dll": {}
+        },
+        "runtime": {
+          "lib/net8.0-maccatalyst17.5/Plugin.Maui.Audio.dll": {}
+        }
       }
     },
     "net8.0-maccatalyst18.0/android-arm64": {
@@ -19657,6 +19829,15 @@
         "type": "package",
         "build": {
           "build/Microsoft.NET.ILLink.Tasks.props": {}
+        }
+      },
+      "Plugin.Maui.Audio/3.0.1": {
+        "type": "package",
+        "compile": {
+          "lib/net8.0-maccatalyst17.5/Plugin.Maui.Audio.dll": {}
+        },
+        "runtime": {
+          "lib/net8.0-maccatalyst17.5/Plugin.Maui.Audio.dll": {}
         }
       }
     },
@@ -20079,6 +20260,15 @@
         "build": {
           "build/Microsoft.NET.ILLink.Tasks.props": {}
         }
+      },
+      "Plugin.Maui.Audio/3.0.1": {
+        "type": "package",
+        "compile": {
+          "lib/net8.0-maccatalyst17.5/Plugin.Maui.Audio.dll": {}
+        },
+        "runtime": {
+          "lib/net8.0-maccatalyst17.5/Plugin.Maui.Audio.dll": {}
+        }
       }
     },
     "net8.0-maccatalyst18.0/android-x86": {
@@ -20499,6 +20689,15 @@
         "type": "package",
         "build": {
           "build/Microsoft.NET.ILLink.Tasks.props": {}
+        }
+      },
+      "Plugin.Maui.Audio/3.0.1": {
+        "type": "package",
+        "compile": {
+          "lib/net8.0-maccatalyst17.5/Plugin.Maui.Audio.dll": {}
+        },
+        "runtime": {
+          "lib/net8.0-maccatalyst17.5/Plugin.Maui.Audio.dll": {}
         }
       }
     },
@@ -20921,6 +21120,15 @@
         "build": {
           "build/Microsoft.NET.ILLink.Tasks.props": {}
         }
+      },
+      "Plugin.Maui.Audio/3.0.1": {
+        "type": "package",
+        "compile": {
+          "lib/net8.0-maccatalyst17.5/Plugin.Maui.Audio.dll": {}
+        },
+        "runtime": {
+          "lib/net8.0-maccatalyst17.5/Plugin.Maui.Audio.dll": {}
+        }
       }
     },
     "net8.0-maccatalyst18.0/maccatalyst-arm64": {
@@ -21341,6 +21549,15 @@
         "type": "package",
         "build": {
           "build/Microsoft.NET.ILLink.Tasks.props": {}
+        }
+      },
+      "Plugin.Maui.Audio/3.0.1": {
+        "type": "package",
+        "compile": {
+          "lib/net8.0-maccatalyst17.5/Plugin.Maui.Audio.dll": {}
+        },
+        "runtime": {
+          "lib/net8.0-maccatalyst17.5/Plugin.Maui.Audio.dll": {}
         }
       }
     }
@@ -22570,6 +22787,25 @@
         "tools/net8.0/illink.dll",
         "tools/net8.0/illink.runtimeconfig.json",
         "useSharedDesignerContext.txt"
+      ]
+    },
+    "Plugin.Maui.Audio/3.0.1": {
+      "sha512": "bVbILV34AhaGOfVzcKXYl3zgZXZD7TrgyKSvG014z4uMhRNoq1reVwQXIOok6elpIgPWQ1o+j6o88ZqteTS8Fw==",
+      "type": "package",
+      "path": "plugin.maui.audio/3.0.1",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "README.md",
+        "icon.png",
+        "lib/net8.0-android34.0/Plugin.Maui.Audio.dll",
+        "lib/net8.0-android34.0/Plugin.Maui.Audio.xml",
+        "lib/net8.0-ios17.5/Plugin.Maui.Audio.dll",
+        "lib/net8.0-maccatalyst17.5/Plugin.Maui.Audio.dll",
+        "lib/net8.0-windows10.0.19041/Plugin.Maui.Audio.dll",
+        "lib/net8.0/Plugin.Maui.Audio.dll",
+        "plugin.maui.audio.3.0.1.nupkg.sha512",
+        "plugin.maui.audio.nuspec"
       ]
     },
     "Xamarin.Android.Glide/4.15.1.2": {
@@ -24615,19 +24851,22 @@
       "Microsoft.Extensions.Logging.Debug >= 8.0.1",
       "Microsoft.Maui.Controls >= 8.0.83",
       "Microsoft.Maui.Controls.Compatibility >= 8.0.83",
-      "Microsoft.NET.ILLink.Tasks >= 8.0.8"
+      "Microsoft.NET.ILLink.Tasks >= 8.0.8",
+      "Plugin.Maui.Audio >= 3.0.1"
     ],
     "net8.0-ios18.0": [
       "Microsoft.Extensions.Logging.Debug >= 8.0.1",
       "Microsoft.Maui.Controls >= 8.0.83",
       "Microsoft.Maui.Controls.Compatibility >= 8.0.83",
-      "Microsoft.NET.ILLink.Tasks >= 8.0.8"
+      "Microsoft.NET.ILLink.Tasks >= 8.0.8",
+      "Plugin.Maui.Audio >= 3.0.1"
     ],
     "net8.0-maccatalyst18.0": [
       "Microsoft.Extensions.Logging.Debug >= 8.0.1",
       "Microsoft.Maui.Controls >= 8.0.83",
       "Microsoft.Maui.Controls.Compatibility >= 8.0.83",
-      "Microsoft.NET.ILLink.Tasks >= 8.0.8"
+      "Microsoft.NET.ILLink.Tasks >= 8.0.8",
+      "Plugin.Maui.Audio >= 3.0.1"
     ]
   },
   "packageFolders": {
@@ -24696,6 +24935,10 @@
             "target": "Package",
             "version": "[8.0.8, )",
             "autoReferenced": true
+          },
+          "Plugin.Maui.Audio": {
+            "target": "Package",
+            "version": "[3.0.1, )"
           }
         },
         "imports": [
@@ -24739,6 +24982,10 @@
             "target": "Package",
             "version": "[8.0.8, )",
             "autoReferenced": true
+          },
+          "Plugin.Maui.Audio": {
+            "target": "Package",
+            "version": "[3.0.1, )"
           }
         },
         "imports": [
@@ -24782,6 +25029,10 @@
             "target": "Package",
             "version": "[8.0.8, )",
             "autoReferenced": true
+          },
+          "Plugin.Maui.Audio": {
+            "target": "Package",
+            "version": "[3.0.1, )"
           }
         },
         "imports": [

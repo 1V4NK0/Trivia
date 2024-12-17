@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "eQRFDfIIQY+2yfTHwIyJATU3M5WK101dD3FrJF+Lp9UTI57Jj5lTq0Lw3BPjPQHBArlXi5hVZZ6J2n8ZdbqRLQ==",
+  "dgSpecHash": "znxHsX237EWy+Vno2LWKJu6nVrg+DK7vb4PkZ1BJeDUgbAePK65BMrtWMjTZL8o+HIuTU+jKLbD8pvlWd7C67g==",
   "success": true,
   "projectFilePath": "/Users/zsutop/CrossPlatform/TriviaIvanCherkes/TriviaIvanCherkes/TriviaIvanCherkes.csproj",
   "expectedPackageFiles": [
@@ -24,6 +24,7 @@
     "/Users/zsutop/.nuget/packages/microsoft.maui.graphics/8.0.83/microsoft.maui.graphics.8.0.83.nupkg.sha512",
     "/Users/zsutop/.nuget/packages/microsoft.maui.resizetizer/8.0.83/microsoft.maui.resizetizer.8.0.83.nupkg.sha512",
     "/Users/zsutop/.nuget/packages/microsoft.net.illink.tasks/8.0.8/microsoft.net.illink.tasks.8.0.8.nupkg.sha512",
+    "/Users/zsutop/.nuget/packages/plugin.maui.audio/3.0.1/plugin.maui.audio.3.0.1.nupkg.sha512",
     "/Users/zsutop/.nuget/packages/xamarin.android.glide/4.15.1.2/xamarin.android.glide.4.15.1.2.nupkg.sha512",
     "/Users/zsutop/.nuget/packages/xamarin.android.glide.annotations/4.15.1.2/xamarin.android.glide.annotations.4.15.1.2.nupkg.sha512",
     "/Users/zsutop/.nuget/packages/xamarin.android.glide.disklrucache/4.15.1.2/xamarin.android.glide.disklrucache.4.15.1.2.nupkg.sha512",

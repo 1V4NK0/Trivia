@@ -12,5 +12,8 @@
             HorizontalOptions="Center" />
 
         <Label x:Name="PlayerCountLabel" TextColor="{DynamicResource TextColor}" HorizontalOptions="Center" FontSize="34" Text="{Binding Players}"/>
+        <Label  TextColor="{DynamicResource TextColor}" HorizontalOptions="Center" FontSize="34" Text="{Binding Difficulty}"/>
+        <Label  TextColor="{DynamicResource TextColor}" HorizontalOptions="Center" FontSize="34" Text="{Binding NumOfQuestions}"/>
+        <Label  TextColor="{DynamicResource TextColor}" HorizontalOptions="Center" FontSize="34" Text="{Binding Topic}"/>
     </VerticalStackLayout>
 </ContentPage>

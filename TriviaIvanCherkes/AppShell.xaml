@@ -8,15 +8,15 @@
     Title="TriviaIvanCherkes">
 
     <TabBar>
-        <Tab  Icon="home.png">
+        <Tab Title="Home" Icon="home.png">
             <ShellContent ContentTemplate="{DataTemplate local:MainPage}"/>
         </Tab>
 
-        <Tab  Icon="settings.png">
+        <Tab Title="Settings" Icon="settings.png">
             <ShellContent ContentTemplate="{DataTemplate local:SettingsPage}"/>
         </Tab>
 
-        <Tab  Icon="results.png">
+        <Tab Title="Results" Icon="results.png">
             <ShellContent ContentTemplate="{DataTemplate local:ResultsPage}"/>
         </Tab>
 

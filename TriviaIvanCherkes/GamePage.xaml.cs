@@ -14,11 +14,48 @@ public partial class GamePage : ContentPage, INotifyPropertyChanged
             OnPropertyChanged(nameof(Players));
         }
     }
-	public GamePage(string players)
+
+    private string topic;
+    public string Topic
+    {
+        get => topic;
+        set
+        {
+            topic = value;
+            OnPropertyChanged(nameof(Topic));
+        }
+    }
+
+    private int numOfQuestions;
+    public int NumOfQuestions
+    {
+        get => numOfQuestions;
+        set
+        {
+            numOfQuestions = value;
+            OnPropertyChanged(nameof(NumOfQuestions));
+        }
+    }
+
+    private string difficulty;
+    public string Difficulty
+    {
+        get => difficulty;
+        set
+        {
+            difficulty = value;
+            OnPropertyChanged(nameof(Difficulty));
+        }
+    }
+
+	public GamePage(string players, int numOfQuestions, string topic, string difficulty)
 	{
 		InitializeComponent();
-        Players = players;
         BindingContext = this;
+        Players = players;
+        Difficulty = difficulty;
+        NumOfQuestions = numOfQuestions;
+        Topic = topic;
 	}
 
    
