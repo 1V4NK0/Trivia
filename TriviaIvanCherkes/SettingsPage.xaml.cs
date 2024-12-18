@@ -1,7 +1,7 @@
 ﻿using TriviaIvanCherkes.Resources.Styles;
 using Plugin.Maui.Audio;
 using System.ComponentModel;
-
+using Microsoft.Maui.Controls;
 namespace TriviaIvanCherkes;
 
 public partial class SettingsPage : ContentPage, INotifyPropertyChanged
@@ -71,6 +71,7 @@ public partial class SettingsPage : ContentPage, INotifyPropertyChanged
         NumOfQuestions = Preferences.Get("numOfQuestions", 10);
         // Apply the saved theme on page load
         ApplyTheme(IsDarkTheme);
+        //For some reason does not work on Android but does on Windows and Mac
         InitializeAudioPlayer();
         
     }
@@ -83,6 +84,8 @@ public partial class SettingsPage : ContentPage, INotifyPropertyChanged
         // Apply the theme based on the updated toggle state
         ApplyTheme(IsDarkTheme);
     }
+
+    
 
     private async void InitializeAudioPlayer()
     {
@@ -128,4 +131,6 @@ public partial class SettingsPage : ContentPage, INotifyPropertyChanged
             audioPlayer.Stop();
         }
     }
+
+    
 }

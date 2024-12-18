@@ -11,6 +11,21 @@
                 <ResourceDictionary Source="Resources/Styles/LightTheme.xaml"/>
                 <ResourceDictionary Source="Resources/Styles/DarkTheme.xaml"/>
             </ResourceDictionary.MergedDictionaries>
+            <Style TargetType="Label">
+                <Setter Property="FontSize">
+                    <Setter.Value>
+                        <OnIdiom Phone="15" Desktop="30"/>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+
+            <Style TargetType="Button">
+                <Setter Property="FontSize">
+                    <Setter.Value>
+                        <OnIdiom Phone="12" Desktop="25"/>
+                    </Setter.Value>
+                </Setter>
+            </Style>
         </ResourceDictionary>
     </Application.Resources>
 </Application>

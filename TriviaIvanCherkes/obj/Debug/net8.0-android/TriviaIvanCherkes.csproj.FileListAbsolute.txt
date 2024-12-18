@@ -1047,7 +1047,3 @@
 /Users/zsutop/CrossPlatform/TriviaIvanCherkes/TriviaIvanCherkes/obj/Debug/net8.0-android/resizetizer/sp/drawable/maui_splash_image.xml
 /Users/zsutop/CrossPlatform/TriviaIvanCherkes/TriviaIvanCherkes/obj/Debug/net8.0-android/resizetizer/sp/values/maui_colors.xml
 /Users/zsutop/CrossPlatform/TriviaIvanCherkes/TriviaIvanCherkes/obj/Debug/net8.0-android/resizetizer/503008DC1B4A3BC8-files.cache
-/Users/zsutop/CrossPlatform/TriviaIvanCherkes/TriviaIvanCherkes/obj/Debug/net8.0-android/android/assets/arm64-v8a/System.Private.CoreLib.dll
-/Users/zsutop/CrossPlatform/TriviaIvanCherkes/TriviaIvanCherkes/obj/Debug/net8.0-android/android/assets/armeabi-v7a/System.Private.CoreLib.dll
-/Users/zsutop/CrossPlatform/TriviaIvanCherkes/TriviaIvanCherkes/obj/Debug/net8.0-android/android/assets/x86/System.Private.CoreLib.dll
-/Users/zsutop/CrossPlatform/TriviaIvanCherkes/TriviaIvanCherkes/obj/Debug/net8.0-android/android/assets/x86_64/System.Private.CoreLib.dll

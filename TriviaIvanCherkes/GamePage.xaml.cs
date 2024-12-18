@@ -1,8 +1,16 @@
 ﻿using System.ComponentModel;
 using System.Text.Json;
 using System.Collections.ObjectModel;
-
+using System.Web;
 namespace TriviaIvanCherkes;
+//dotnet build -t:Run -f net8.0-maccatalyst
+
+//TODO:
+
+//add method for answering and moving to the next question
+//add points for answers
+//add switching between players!
+//add timer for each question and inside settings!
 public partial class GamePage : ContentPage, INotifyPropertyChanged
 {
     private string players;
@@ -21,6 +29,7 @@ public partial class GamePage : ContentPage, INotifyPropertyChanged
     private int currentQuestionIndex;
     List<Question> questionList;
     HttpClient httpClient;
+    private int score;
 
     private string topic;
     public string Topic
@@ -51,7 +60,6 @@ public partial class GamePage : ContentPage, INotifyPropertyChanged
         {
             currentQuestion = value;
             OnPropertyChanged(nameof(CurrentQuestion));
-            //might be a problem
             OnPropertyChanged(nameof(Answers));
             
         }
@@ -130,7 +138,6 @@ public partial class GamePage : ContentPage, INotifyPropertyChanged
     protected async override void OnNavigatedTo(NavigatedToEventArgs args)
     {
         base.OnNavigatedTo(args);
-        //there is a problem with MakeCollection itself OR with GetQuestions OR the way we handle API request nested objs
         await MakeCollection();
     }
 
@@ -151,32 +158,32 @@ public partial class GamePage : ContentPage, INotifyPropertyChanged
 
         try
         {
-            Console.WriteLine($"Making API call to: {url}");
+            //Console.WriteLine($"Making API call to: {url}");
 
             var response = await httpClient.GetAsync(url);
             if (response.IsSuccessStatusCode)
             {
                 string contents = await response.Content.ReadAsStringAsync();
-                Console.WriteLine("API Response: " + contents);  
+                //Console.WriteLine("API Response: " + contents);  
 
                 var questionResponse = JsonSerializer.Deserialize<QuestionResponse>(contents);
                 //Console.WriteLine("QUESTION RESPONSE RESULTS: " + questionResponse?.Results);
-                Console.WriteLine("Deserialized API Response: " + JsonSerializer.Serialize(questionResponse));  // Check the deserialized object
+                //Console.WriteLine("Deserialized API Response: " + JsonSerializer.Serialize(questionResponse));  // Check the deserialized object
 
                 if (questionResponse?.results != null)
                 {
                     questionList = questionResponse.results;
-                    Console.WriteLine($"Fetched {questionList.Count} questions.");
+                    //Console.WriteLine($"Fetched {questionList.Count} questions.");
                 }
                 else
                 {
-                    Console.WriteLine("No results found in API response.");
+                    //Console.WriteLine("No results found in API response.");
                 }
             }
         }
         catch (Exception ex)
         {
-            Console.WriteLine($"Error loading questions: {ex.Message}");
+            //Console.WriteLine($"Error loading questions: {ex.Message}");
             await Shell.Current.DisplayAlert("Error loading questions", ex.Message, "OK");
         }
     }
@@ -196,18 +203,25 @@ public partial class GamePage : ContentPage, INotifyPropertyChanged
 
         try
         {
-            Console.WriteLine("Calling GetQuestions...");  // Debug log
+            //Console.WriteLine("Calling GetQuestions...");  // Debug log
             await GetQuestions(Difficulty, NumOfQuestions, Topic);
 
             if (questionList.Count == 0)
             {
-                Console.WriteLine("No questions loaded!");  // Debug log
+                //Console.WriteLine("No questions loaded!");  // Debug log
                 return;
             }
 
             _questions.Clear();
+            //Formatting question because you get those html things
             foreach (var question in questionList)
             {
+                question.question = HttpUtility.HtmlDecode(question.question);
+                question.correct_answer = HttpUtility.HtmlDecode(question.correct_answer);
+                for (int i = 0; i < question.incorrect_answers.Count; i++)
+                {
+                    question.incorrect_answers[i] = HttpUtility.HtmlDecode(question.incorrect_answers[i]);
+                }
                 _questions.Add(question);
             }
             Console.WriteLine($"Loaded {questionList.Count} questions.");  // Debug log
@@ -236,13 +250,39 @@ public partial class GamePage : ContentPage, INotifyPropertyChanged
             currentQuestionIndex++;
         } else
         {
-            //game over;
+            QuestionLabel.Text = "Game Over!";
+            GameFinished();
         }
     }
 
-    void OnSelectedAnswer(System.Object sender, Microsoft.Maui.Controls.SelectionChangedEventArgs e)
+    
+
+    async void AnswBtn_Clicked(System.Object sender, System.EventArgs e)
     {
+        var button = (Button)sender;
+        var answer = button.Text;
+        var correctAnsw = CurrentQuestion.correct_answer;
+        if (answer.Equals(correctAnsw))
+        {
+            button.BackgroundColor = Colors.Green;
+            button.Text = "😎";
+            score++;
+        }
+        else
+        {
+            button.BackgroundColor = Colors.Red;
+            button.Text = "😢";
+        }
+        await Task.Delay(500);
+
+        NextQuestion();
+        button.BackgroundColor = (Color)Application.Current.Resources["TextColor"]; // Reset to the default color
+        button.Text = answer;
     }
 
-       //todo answer selected method
+    void GameFinished()
+    {
+        QuestionsView.IsVisible = false;
+    }
+
 }

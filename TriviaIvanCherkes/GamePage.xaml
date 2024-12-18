@@ -4,7 +4,7 @@
              x:Class="TriviaIvanCherkes.GamePage"
              BackgroundColor="{DynamicResource BackgroundColor}"
              Title="Game">
-    <VerticalStackLayout Padding="20">
+    <VerticalStackLayout Padding="20" Spacing="30" x:Name="Layout">
         <ActivityIndicator IsRunning="{Binding IsBusy}" Color="Pink"/>
         <Label
             x:Name="QuestionLabel"
@@ -12,23 +12,24 @@
             TextColor="{DynamicResource TextColor}"
             VerticalOptions="Center"
             HorizontalOptions="Center"
+            HorizontalTextAlignment="Center"
             FontSize="30"/>
 
-
-        <CollectionView ItemsSource="{Binding Answers}"
-                SelectedItem="{Binding SelectedAnswer}"
-                SelectionChanged="OnSelectedAnswer">
+        <!--might onselected item-->
+        <CollectionView ItemsSource="{Binding Answers}" x:Name="QuestionsView"
+                SelectedItem="{Binding SelectedAnswer}">
+                
+            <CollectionView.ItemsLayout>
+                <LinearItemsLayout Orientation="Vertical" ItemSpacing="20"/>
+            </CollectionView.ItemsLayout>
             <CollectionView.ItemTemplate>
                 <DataTemplate>
-                    <Button Text="{Binding}" TextColor="{DynamicResource TextColor}"/>
+                    <Button Text="{Binding}" Clicked="AnswBtn_Clicked" BackgroundColor="{DynamicResource TextColor}" FontSize="18" TextColor="{DynamicResource BackgroundColor}"/>
                 </DataTemplate>
             </CollectionView.ItemTemplate>
         </CollectionView>
 
         
-        <!--<Label x:Name="PlayerCountLabel" TextColor="{DynamicResource TextColor}" HorizontalOptions="Center" FontSize="34" Text="{Binding Players}"/>
-        <Label  TextColor="{DynamicResource TextColor}" HorizontalOptions="Center" FontSize="34" Text="{Binding Difficulty}"/>
-        <Label  TextColor="{DynamicResource TextColor}" HorizontalOptions="Center" FontSize="34" Text="{Binding NumOfQuestions}"/>
-        <Label  TextColor="{DynamicResource TextColor}" HorizontalOptions="Center" FontSize="34" Text="{Binding Topic}"/>-->
+        
     </VerticalStackLayout>
 </ContentPage>

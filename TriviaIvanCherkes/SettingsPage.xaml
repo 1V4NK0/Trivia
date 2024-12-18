@@ -4,12 +4,8 @@
              x:Class="TriviaIvanCherkes.SettingsPage"
              BackgroundColor="{DynamicResource BackgroundColor}"
              Title="Settings 🎅">
-    <!--settings:
-    difficulty
-    time
-    topics (select)
-    sound?-->
-    <VerticalStackLayout HorizontalOptions="Center" VerticalOptions="Center" >
+    
+    <VerticalStackLayout HorizontalOptions="Center" VerticalOptions="Center" Spacing="20">
         <HorizontalStackLayout>
             <Label 
                 Text="🕶 Dark theme "
@@ -20,7 +16,7 @@
             <Switch Toggled="DarkTheme_Toggled" IsToggled="{Binding IsDarkTheme}"/>
         </HorizontalStackLayout>
 
-        <HorizontalStackLayout>
+        <HorizontalStackLayout >
             <Label
                 FontSize="24"
                 TextColor="{DynamicResource TextColor}"
