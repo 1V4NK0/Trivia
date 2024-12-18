@@ -38,7 +38,7 @@ public partial class GamePage : ContentPage, INotifyPropertyChanged
         get
         {
             if (CurrentQuestion == null) return new List<string>();
-            List<string> allAnswers = new List<string>(CurrentQuestion.IncorrectAnswers) { CurrentQuestion.CorrectAnswer };
+            List<string> allAnswers = new List<string>(CurrentQuestion.incorrect_answers) { CurrentQuestion.correct_answer };
             return allAnswers;
         }
     }
@@ -157,12 +157,15 @@ public partial class GamePage : ContentPage, INotifyPropertyChanged
             if (response.IsSuccessStatusCode)
             {
                 string contents = await response.Content.ReadAsStringAsync();
-                Console.WriteLine("API Response: " + contents);  // Debug log
+                Console.WriteLine("API Response: " + contents);  
 
                 var questionResponse = JsonSerializer.Deserialize<QuestionResponse>(contents);
-                if (questionResponse?.Results != null)
+                //Console.WriteLine("QUESTION RESPONSE RESULTS: " + questionResponse?.Results);
+                Console.WriteLine("Deserialized API Response: " + JsonSerializer.Serialize(questionResponse));  // Check the deserialized object
+
+                if (questionResponse?.results != null)
                 {
-                    questionList = questionResponse.Results;
+                    questionList = questionResponse.results;
                     Console.WriteLine($"Fetched {questionList.Count} questions.");
                 }
                 else

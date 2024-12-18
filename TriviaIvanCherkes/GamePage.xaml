@@ -8,7 +8,7 @@
         <ActivityIndicator IsRunning="{Binding IsBusy}" Color="Pink"/>
         <Label
             x:Name="QuestionLabel"
-            Text="{Binding CurrentQuestion.QuestionText}"
+            Text="{Binding CurrentQuestion.question}"
             TextColor="{DynamicResource TextColor}"
             VerticalOptions="Center"
             HorizontalOptions="Center"
