@@ -4,8 +4,8 @@ namespace TriviaIvanCherkes;
 
 public partial class MainPage : ContentPage
 {
-    
-    
+    //https://github.com/1V4NK0/Trivia
+
 
     public MainPage()
     {
@@ -17,11 +17,10 @@ public partial class MainPage : ContentPage
     {
         var button = (Button)sender;
         var players = button.Text;
-        //await DisplayAlert("", $"you have chosen {players}", "ok");
+        
         var difficulty = Preferences.Get("difficulty", "medium");
         var topic = Preferences.Get("topic", "general");
-        var numOfQuestions = Preferences.Get("numOfQuestions", 10);
-        //TODO: create dictionary for difficulty and topics to correspond to their indexes
+        var numOfQuestions = Preferences.Get("numOfQuestions", 10);       
         await Navigation.PushAsync(new GamePage(players,numOfQuestions,topic,difficulty));
         
     }

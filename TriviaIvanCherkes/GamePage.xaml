@@ -4,8 +4,16 @@
              x:Class="TriviaIvanCherkes.GamePage"
              BackgroundColor="{DynamicResource BackgroundColor}"
              Title="Game">
-    <VerticalStackLayout Padding="20" Spacing="30" x:Name="Layout">
+    <VerticalStackLayout Padding="20" Spacing="30" x:Name="GeneralLayout">
         <ActivityIndicator IsRunning="{Binding IsBusy}" Color="Pink"/>
+        <Label
+            Text="{Binding CurrPlayer}"
+            TextColor="{DynamicResource TextColor}"
+            VerticalOptions="Center"
+            HorizontalOptions="Center"
+            HorizontalTextAlignment="Center"
+            FontSize="17"
+            x:Name="PlayerTurn"/>
         <Label
             x:Name="QuestionLabel"
             Text="{Binding CurrentQuestion.question}"
