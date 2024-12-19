@@ -5,9 +5,7 @@ using System.Web;
 namespace TriviaIvanCherkes;
 //dotnet build -t:Run -f net8.0-maccatalyst
 
-//TODO:
-//ask for players name if more than 1
-//add switching between players!
+
 //add timer for each question and inside settings!
 //add saving results option (Preferences)
 public partial class GamePage : ContentPage, INotifyPropertyChanged
@@ -151,25 +149,25 @@ public partial class GamePage : ContentPage, INotifyPropertyChanged
         
 	}
 
+    //Method to get players name
     private async Task CollectPlayerNames()
     {
-        if (!Int32.TryParse(Players, out int num) || num <= 0)
-        {
-            await DisplayAlert("Error", "Please specify a valid number of players.", "OK");
-            return;
-        }
+        Int32.TryParse(Players, out int num);
 
         names.Clear(); // Clear any existing names
         for (int i = 0; i < num; i++)
         {
             string name = await DisplayPromptAsync("Player Name", $"Enter the name of player {i + 1}:", "OK");
-            if (string.IsNullOrWhiteSpace(name))
+            if (name == null || name == "")
             {
                 name = $"Player {i + 1}"; // Default name if none is provided
             }
+            //THIS MIGHT BE THE WHOLE PROBLEM?!
+            playersScore.Add(name, 0);
             names.Add(name);
         }
         CurrPlayer = names[0]; // Set the first player as the current player
+        
     }
 
 
@@ -184,6 +182,8 @@ public partial class GamePage : ContentPage, INotifyPropertyChanged
         await MakeCollection();
     }
 
+
+    //Fetching questions from API
     public async Task GetQuestions(string difficulty, int numOfQuestions, string topic)
     {
         int topicNumber;
@@ -231,6 +231,8 @@ public partial class GamePage : ContentPage, INotifyPropertyChanged
         }
     }
 
+
+    //Making a questions list from data 
     public async Task MakeCollection()
     {
         if (isBusy)
@@ -276,23 +278,16 @@ public partial class GamePage : ContentPage, INotifyPropertyChanged
         }
     }
 
+
+    //Moving to the next question and switching between players
     public void NextQuestion()
     {
         if (currentQuestionIndex < questionList.Count)
         {
             CurrentQuestion = questionList[currentQuestionIndex];
             currentQuestionIndex++;
-
-            // Update current player
             CurrPlayer = names[currentPlayerIndex];
-            currentPlayerIndex = (currentPlayerIndex + 1) % names.Count; // Cycle to the next player
-        }
-
-
-        if (currentQuestionIndex < questionList.Count)
-        {
-            CurrentQuestion = questionList[currentQuestionIndex];
-            currentQuestionIndex++;
+            currentPlayerIndex = (currentPlayerIndex + 1) % names.Count;
         } else
         {
             QuestionLabel.Text = "Game Over!";
@@ -301,7 +296,7 @@ public partial class GamePage : ContentPage, INotifyPropertyChanged
     }
 
     
-
+    //Answering question
     async void AnswBtn_Clicked(System.Object sender, System.EventArgs e)
     {
         var button = (Button)sender;
@@ -311,7 +306,12 @@ public partial class GamePage : ContentPage, INotifyPropertyChanged
         {
             button.BackgroundColor = Colors.Green;
             button.Text = "😎";
-            score++;
+            //might be a problem with this OR no players are actually added to the dictionary?
+            if (playersScore.ContainsKey(CurrPlayer))
+            {
+                playersScore[CurrPlayer]++;
+                Console.WriteLine("PLAYER SCORE: " + playersScore[CurrPlayer]);
+            }
         }
         else
         {
@@ -319,25 +319,61 @@ public partial class GamePage : ContentPage, INotifyPropertyChanged
             button.Text = "😢";
         }
         await Task.Delay(500);
-
         NextQuestion();
         button.BackgroundColor = (Color)Application.Current.Resources["TextColor"]; // Reset to the default color
         button.Text = answer;
     }
 
+
+    //
     void GameFinished()
     {
-        QuestionsView.IsVisible = false;
-        PlayerTurn.IsVisible = false;
-        var LabelResult = new Label
+        foreach (var pop in playersScore)
         {
-            Text = $"You scored {score} out of {questionList.Count}!",
-            FontSize = 30,
-            HorizontalOptions = LayoutOptions.Center,
-            TextColor = (Color)Application.Current.Resources["TextColor"]
-         };
-        GeneralLayout.Children.Add(LabelResult);
+            Console.WriteLine("SCORE: " + pop.Key + pop.Value);
+        }
+        // Hide the question view and player turn
+        QuestionsView.IsVisible = false;
+        CurrPlayerStack.IsVisible = false;
+        
+        // Create the ListView and bind to the dictionary converted to a list of KeyValuePair
+        var resultListView = new ListView
+        {
+            ItemsSource = playersScore.ToList(),  // Convert dictionary to list of KeyValuePairs
+            ItemTemplate = new DataTemplate(() =>
+            {
+                var nameLabel = new Label()
+                {
+                    TextColor = (Color)Application.Current.Resources["TextColor"],
+                    FontSize = 20,
+                    HorizontalOptions = LayoutOptions.StartAndExpand
+                };
+                nameLabel.SetBinding(Label.TextProperty, new Binding("Key")); // Bind to player name (Key)
 
+                var scoreLabel = new Label()
+                {
+                    TextColor = (Color)Application.Current.Resources["TextColor"],
+                    FontSize = 20,
+                    HorizontalOptions = LayoutOptions.End
+
+                };
+                scoreLabel.SetBinding(Label.TextProperty, new Binding("Value")); // Bind to score (Value)
+
+                // Use a StackLayout to arrange player name and score horizontally
+                var stackLayout = new StackLayout
+                {
+                    Orientation = StackOrientation.Horizontal,  // Horizontal layout for name and score
+                    Children = { nameLabel, scoreLabel },
+                    Padding = 30
+                };
+
+                return new ViewCell { View = stackLayout };
+            })
+        };
+
+        // Add the ListView to the layout
+        GeneralLayout.Children.Add(resultListView);
     }
+
 
 }
