@@ -20,8 +20,9 @@ public partial class MainPage : ContentPage
         
         var difficulty = Preferences.Get("difficulty", "medium");
         var topic = Preferences.Get("topic", "general");
-        var numOfQuestions = Preferences.Get("numOfQuestions", 10);       
-        await Navigation.PushAsync(new GamePage(players,numOfQuestions,topic,difficulty));
+        var numOfQuestions = Preferences.Get("numOfQuestions", 10);
+        var time = Preferences.Get("time", 20);
+        await Navigation.PushAsync(new GamePage(players,numOfQuestions,topic,difficulty,time));
         
     }
 }

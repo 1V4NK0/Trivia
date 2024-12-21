@@ -2,6 +2,7 @@
 using System.Text.Json;
 using System.Collections.ObjectModel;
 using System.Web;
+using System.Timers;
 namespace TriviaIvanCherkes;
 //dotnet build -t:Run -f net8.0-maccatalyst
 
@@ -10,6 +11,7 @@ namespace TriviaIvanCherkes;
 //add saving results option (Preferences)
 public partial class GamePage : ContentPage, INotifyPropertyChanged
 {
+    private System.Timers.Timer timer;
     private string players;
     public string Players
     {
@@ -132,13 +134,37 @@ public partial class GamePage : ContentPage, INotifyPropertyChanged
         }
     }
 
-	public GamePage(string players, int numOfQuestions, string topic, string difficulty)
+
+    private int time;
+    public int Time
+    {
+        get => time;
+        set
+        {
+            time = value;
+            OnPropertyChanged(nameof(Time));
+        }
+
+    }
+    private int showTime;
+    public int ShowTime
+    {
+        get => showTime;
+        set
+        {
+            showTime = value;
+            OnPropertyChanged(nameof(ShowTime));
+        }
+    }
+
+	public GamePage(string players, int numOfQuestions, string topic, string difficulty,int time)
 	{
 		InitializeComponent();
         Players = players;
         Difficulty = difficulty;
         NumOfQuestions = numOfQuestions;
         Topic = topic;
+        Time = time;
         httpClient = new HttpClient();
         questionList = new List<Question>();
         _questions = new ObservableCollection<Question>();
@@ -146,28 +172,72 @@ public partial class GamePage : ContentPage, INotifyPropertyChanged
         currentPlayerIndex = 0;
         BindingContext = this;
         names = new List<string>();
+        ShowTime = Time;
+        timer = new System.Timers.Timer(1000);
+        timer.Elapsed += Timer_Elapsed;
         
 	}
+
+    private void Timer_Elapsed(object? sender, ElapsedEventArgs e)
+    {
+        if (showTime == 0)
+        {
+            StopTimer();
+            NextQuestion();
+
+        } else
+        {
+
+            showTime--;
+        }
+        MainThread.BeginInvokeOnMainThread(() =>
+        {
+            ShowTime = showTime; // Set the updated time to your property (for example)
+        });
+
+    }
+
+    private void StartTimer()
+    {
+        timer.Start();
+    }
+
+    private void StopTimer()
+    {
+        timer.Stop();
+    }
+
 
     //Method to get players name
     private async Task CollectPlayerNames()
     {
         Int32.TryParse(Players, out int num);
+        try
+        {
 
+        
         names.Clear(); // Clear any existing names
         for (int i = 0; i < num; i++)
         {
             string name = await DisplayPromptAsync("Player Name", $"Enter the name of player {i + 1}:", "OK");
-            if (name == null || name == "")
+            if (playersScore.ContainsKey(name))
             {
-                name = $"Player {i + 1}"; // Default name if none is provided
+                await DisplayAlert("Error", "Player names must be unique.", "OK");
+                i--; // Prompt the same player again
+                continue;
             }
-            //THIS MIGHT BE THE WHOLE PROBLEM?!
+            
             playersScore.Add(name, 0);
             names.Add(name);
         }
         CurrPlayer = names[0]; // Set the first player as the current player
-        
+        }
+        catch (Exception e)
+        {
+            await DisplayAlert("Error", e.Message, "Ok");
+            await Shell.Current.GoToAsync(".."); // Navigate back to the main page
+
+        }
     }
 
 
@@ -177,9 +247,14 @@ public partial class GamePage : ContentPage, INotifyPropertyChanged
     protected async override void OnNavigatedTo(NavigatedToEventArgs args)
     {
         base.OnNavigatedTo(args);
-        await CollectPlayerNames();
+        if (names.Count == 0)
+        {
+
+        await CollectPlayerNames(); 
+        }
         
         await MakeCollection();
+        StartTimer();
     }
 
 
@@ -282,8 +357,11 @@ public partial class GamePage : ContentPage, INotifyPropertyChanged
     //Moving to the next question and switching between players
     public void NextQuestion()
     {
+        
         if (currentQuestionIndex < questionList.Count)
         {
+            showTime = time;
+            StartTimer();
             CurrentQuestion = questionList[currentQuestionIndex];
             currentQuestionIndex++;
             CurrPlayer = names[currentPlayerIndex];
@@ -292,6 +370,7 @@ public partial class GamePage : ContentPage, INotifyPropertyChanged
         {
             QuestionLabel.Text = "Game Over!";
             GameFinished();
+            StopTimer();
         }
     }
 
@@ -325,55 +404,107 @@ public partial class GamePage : ContentPage, INotifyPropertyChanged
     }
 
 
-    //
+    //maybe add async and await
     void GameFinished()
     {
         foreach (var pop in playersScore)
         {
-            Console.WriteLine("SCORE: " + pop.Key + pop.Value);
+            Console.WriteLine($"SCORE: {pop.Key} - {pop.Value}");
         }
-        // Hide the question view and player turn
+
         QuestionsView.IsVisible = false;
         CurrPlayerStack.IsVisible = false;
+
         
-        // Create the ListView and bind to the dictionary converted to a list of KeyValuePair
-        var resultListView = new ListView
+
+        var resultsCollectionView = new CollectionView
         {
-            ItemsSource = playersScore.ToList(),  // Convert dictionary to list of KeyValuePairs
+            ItemsSource = playersScore.ToList(),
             ItemTemplate = new DataTemplate(() =>
             {
-                var nameLabel = new Label()
+                var frame = new Frame
                 {
-                    TextColor = (Color)Application.Current.Resources["TextColor"],
-                    FontSize = 20,
-                    HorizontalOptions = LayoutOptions.StartAndExpand
-                };
-                nameLabel.SetBinding(Label.TextProperty, new Binding("Key")); // Bind to player name (Key)
-
-                var scoreLabel = new Label()
-                {
-                    TextColor = (Color)Application.Current.Resources["TextColor"],
-                    FontSize = 20,
-                    HorizontalOptions = LayoutOptions.End
+                    BackgroundColor = (Color)Application.Current.Resources["TextColor"],
+                    Padding = 10,
+                    CornerRadius = 10,
+                    Margin = 5
 
                 };
-                scoreLabel.SetBinding(Label.TextProperty, new Binding("Value")); // Bind to score (Value)
-
-                // Use a StackLayout to arrange player name and score horizontally
-                var stackLayout = new StackLayout
+                var grid = new Grid
                 {
-                    Orientation = StackOrientation.Horizontal,  // Horizontal layout for name and score
-                    Children = { nameLabel, scoreLabel },
-                    Padding = 30
+                    ColumnDefinitions = { new ColumnDefinition { Width = GridLength.Star }, new ColumnDefinition { Width = GridLength.Auto } },
+                    RowDefinitions = { new RowDefinition { Height = GridLength.Auto } },
+                    Padding = 10
                 };
 
-                return new ViewCell { View = stackLayout };
+                var keyLabel = new Label
+                {
+                    FontSize = 24,
+                    TextColor = (Color)Application.Current.Resources["BackgroundColor"],
+                    HorizontalOptions = LayoutOptions.Start,
+                    VerticalOptions = LayoutOptions.Center
+                };
+                keyLabel.SetBinding(Label.TextProperty, "Key");
+
+                var valueLabel = new Label
+                {
+                    FontSize = 24,
+                    TextColor = (Color)Application.Current.Resources["BackgroundColor"],
+                    HorizontalOptions = LayoutOptions.End,
+                    VerticalOptions = LayoutOptions.Center
+                };
+                valueLabel.SetBinding(Label.TextProperty, "Value");
+
+
+                grid.Children.Add(keyLabel);
+                Grid.SetColumn(keyLabel, 0);
+                Grid.SetRow(keyLabel, 0);
+
+                grid.Children.Add(valueLabel);
+                Grid.SetColumn(valueLabel, 1);
+                Grid.SetRow(valueLabel, 0);
+
+                frame.Content = grid;
+
+                return frame;
             })
         };
 
-        // Add the ListView to the layout
-        GeneralLayout.Children.Add(resultListView);
+        GeneralLayout.Children.Add(resultsCollectionView);
+        //GeneralLayout.Children.Add(resultListView);
+        SaveResult(playersScore); // Save the results to preferences
     }
 
-
+    async void SaveResult(Dictionary<string,int> results) 
+    {
+        try
+        {
+            //Check if there are already some results saved
+            if (Preferences.Get("results", "") != "")
+            {
+                var stringResults = Preferences.Get("results", "");
+                Dictionary<string, int> playersResults = JsonSerializer.Deserialize<Dictionary<string, int>>(stringResults);
+                //Add new results and then save 
+                foreach (var result in results)
+                {
+                    if (!playersResults.ContainsKey(result.Key))
+                    {
+                        playersResults.Add(result.Key, result.Value);
+                    }
+                }
+                var jsonResults = JsonSerializer.Serialize(playersResults);
+                Preferences.Set("results", jsonResults);
+            } else
+            //Just save the results
+            {
+                var json = JsonSerializer.Serialize(results);
+                Preferences.Set("results", json);
+            }
+            //await DisplayAlert("Saving", "Results have been saved", "Ok");
+        }
+        catch (Exception e)
+        {
+            await DisplayAlert("Saving", $"{e.Message}", "Ok");
+        }
+    }
 }

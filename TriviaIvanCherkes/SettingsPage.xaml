@@ -60,6 +60,16 @@
         </HorizontalStackLayout>
 
         <HorizontalStackLayout>
+            <Label
+                FontSize="24"
+                Text="⏱️ Time "
+                TextColor="{DynamicResource TextColor}"
+                VerticalOptions="Center" 
+                HorizontalOptions="Center" />
+            <Entry x:Name="TimeEntry" Keyboard="Numeric" Text="{Binding Time}" FontSize="24" TextColor="{DynamicResource TextColor}"/>
+        </HorizontalStackLayout>
+
+        <HorizontalStackLayout>
             <Label FontSize="24"
                 Text="🤠 Topics: "
                 TextColor="{DynamicResource TextColor}"

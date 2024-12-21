@@ -10,6 +10,31 @@ public partial class SettingsPage : ContentPage, INotifyPropertyChanged
     private string topic;
     private string difficulty;
     private int numOfQuestions;
+    private int time;
+
+    public int Time
+    {
+        get => time;
+        set
+        {
+            
+            if (value < 5 || value > 60)
+            {
+                time = 10;
+                Console.WriteLine("Time value out of range, setting to 10");
+                //for some reason it always sets time to 10
+            }
+            else
+            {
+                time = value;
+                Console.WriteLine(value);
+
+            }
+
+            Preferences.Set("time", time);
+            OnPropertyChanged(nameof(Time));
+        }
+    }
 
     public static Dictionary<string, int> TopicToNumber = new()
     {
@@ -27,6 +52,7 @@ public partial class SettingsPage : ContentPage, INotifyPropertyChanged
         get => topic;
         set
         {
+           
             topic = value;
             OnPropertyChanged(nameof(Topic));
             Preferences.Set("topic", topic);

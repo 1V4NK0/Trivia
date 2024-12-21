@@ -6,6 +6,8 @@
              Title="Game">
     <VerticalStackLayout Padding="20" Spacing="30" x:Name="GeneralLayout">
         <ActivityIndicator IsRunning="{Binding IsBusy}" Color="Pink"/>
+        <Label Text="{Binding ShowTime}" HorizontalOptions="Center" FontSize="30" TextColor="{DynamicResource TextColor}"/>
+
         <HorizontalStackLayout HorizontalOptions="Center" Spacing="10" x:Name="CurrPlayerStack">
             <Label
             TextColor="{DynamicResource TextColor}"
